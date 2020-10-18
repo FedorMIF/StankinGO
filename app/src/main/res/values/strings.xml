@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">СтанкинGo</string>
+    <string name="betta">Мое расписание</string>
+    <string name="help">О программе</string>
+    <string name="gid">Прогрмма разрабоната студентом МГТУ Станкин Коноваловым Федором Михайловичом</string>
+    <string name="caf">Найти кафедру</string>
+    <string name="txtCredits">stankin.project.findway@mail.ru</string>
+    <string name="ver">Версия приложения 1.0.1</string>
+    <string name="aud">Найти аутидорию</string>
+    <string name="zagolovok">Гид по МГТУ СТАНКИН</string>
+    <string name="text1">Введите номер аудитории рядом с Вами и номер нужной Вам</string>
+    <string name="text2">Введите номер аудитории рядом с Вами и название нужной Вам кафедры</string>
+    <string name="butnext">Следующий шаг маршрута</string>
+    <string name="butprev">Предыдущий шаг маршрута</string>
+    <string name="butway">Проложить маршрут</string>
+    <string name="hint">номер</string>
+    <string name="red">РЕДАКТИРОВАТЬ</string>
+    <string name="save">ВЫЙТИ ИЗ РЕДАКТИРОВАНИЯ</string>
+    <string name="writedist">Введите название дисциплины</string>
+    <string name="writedata">Введите дату начала и конца дисциплины</string>
+    <string name="edd">добавить</string>
+    <string name="hintmask">ДДММДДММ</string>
+    <string name = "perswit">Дисциплина через неделю или нет</string>
+</resources>

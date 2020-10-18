@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/pole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:gravity="center"
+            android:onClick="onClickWeek"
+            android:text="НЕДЕЛЯ"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/view17"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@drawable/line" />
+
+        <TextView
+            android:id="@+id/pole1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="onClickWeek"
+            android:text="ПН"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/view15"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@drawable/line" />
+
+        <TextView
+            android:id="@+id/pole2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="onClickWeek"
+            android:text="ВТ"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/view16"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@drawable/line" />
+
+        <TextView
+            android:id="@+id/pole3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="onClickWeek"
+            android:text="СР"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/view14"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@drawable/line" />
+
+        <TextView
+            android:id="@+id/pole4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="onClickWeek"
+            android:text="ЧТ"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/view11"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@drawable/line" />
+
+        <TextView
+            android:id="@+id/pole5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="onClickWeek"
+            android:text="ПТ"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/view12"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@drawable/line" />
+
+        <TextView
+            android:id="@+id/pole6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="onClickWeek"
+            android:text="СУБ"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/view10"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@drawable/line" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
