@@ -1,7 +1,5 @@
 package com.stankingo;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -15,14 +13,19 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+;
+
 public class MainCaf extends AppCompatActivity {
 
     Button Back;
-    String data[] = {"Кафедра станков", "Кафедра философии", "Кафедра теоретической механики и сопротивления материалов",  "Кафедра технологии машиностроения", "Кафедра экономики и управления предприятием",
+    String data[] = {"Выход","Кафедра станков", "Кафедра философии", "Кафедра теоретической механики и сопротивления материалов",  "Кафедра технологии машиностроения", "Кафедра экономики и управления предприятием",
             "Кафедра инженерной экологии и безопасности жизнедеятельности", "Клуб", "Спортзал",
             "Кафедра электротехники, электроники и автоматики", "Профком", "Кафедра композиционных материалов",
             "Кафедра информационных технологий и вычислительных систем", "Кафедра инструментальной техники и технологии формообразования",
@@ -30,7 +33,7 @@ public class MainCaf extends AppCompatActivity {
 
     String num[] = {"501", "507", "450a", "416", "339", "320", "327", "328", "346", "204", "203", "217", "243", "222", "233"};
 
-    String arr[] = {"510", "509", "508", "511", "506", "507", "505", "504", "503", "502", "501",
+    String arr[] = {"exit","510", "509", "508", "511", "506", "507", "505", "504", "503", "502", "501",
             "447", "448", "446", "445", "443", "444", "445", "441", "440", "439", "449", "450", "450a", "450b", "450c",
             "327", "322", "323", "324", "325", "326", "333", "332", "331", "320", "328",
             "233", "225", "224", "223", "222", "235", "234", "236", "237", "238", "239", "221", "220", "219", "218"};
@@ -51,9 +54,12 @@ public class MainCaf extends AppCompatActivity {
         String res = src;
         String f[] = {"а","б","в","г","д","е","ж"};
         String t[] = {"a","b","c","d","e","f","g"};
-        for (int i = 0; i < 7; ++i)
-            if (src.contains(f[i]))
-                res = src.replace(f[i], t[i]);
+        if (src.equals("Вход") || src.equals("вход") ) { res = "entry";
+        } else {
+            for (int i = 0; i < 7; ++i)
+                if (src.contains(f[i]))
+                    res = src.replace(f[i], t[i]);
+        }
         return res;
     }
 
@@ -124,10 +130,11 @@ public class MainCaf extends AppCompatActivity {
                 else {way2.setVisibility(View.VISIBLE);
                     start_cabinet = toEnglish(editrstst1.getText().toString());
                     end_cabinet = num[pos];
-                    if ((start_cabinet.length() <= 4) && (end_cabinet.length() <= 4) &&
+                    if ( ( (start_cabinet.length() <= 4) && (end_cabinet.length() <= 4) &&
                             (start_cabinet.charAt(0) <= '9' && start_cabinet.charAt(0) >= '0') && (start_cabinet.charAt(1) <= '9' && start_cabinet.charAt(1) >= '0') &&
                             (start_cabinet.charAt(2) <= '9' && start_cabinet.charAt(2) >= '0') && (end_cabinet.charAt(0) <= '9' && end_cabinet.charAt(0) >= '0') &&
-                            (end_cabinet.charAt(1) <= '9' && end_cabinet.charAt(1) >= '0') && (end_cabinet.charAt(2) <= '9' && end_cabinet.charAt(2) >= '0')) {
+                            (end_cabinet.charAt(1) <= '9' && end_cabinet.charAt(1) >= '0') && (end_cabinet.charAt(2) <= '9' && end_cabinet.charAt(2) >= '0') )
+                            || ( start_cabinet.equals("entry") || end_cabinet.equals("exit") ) ) {
                         if (start_cabinet.charAt(0) == '0') {
                             start_build = "new";
                             start_level = start_cabinet.charAt(1);
@@ -154,6 +161,9 @@ public class MainCaf extends AppCompatActivity {
                                 else end_build = "oldold";
                                 end_level = end_cabinet.charAt(0);}
                         }
+
+                        if (start_cabinet.equals("entry")) {start_level = '1'; start_build = "old";}
+                        if (end_cabinet.equals("exit")) {end_level = '1'; end_build = "old";}
 
                         //собрание пути
                         if (start_build == end_build){
@@ -362,7 +372,9 @@ public class MainCaf extends AppCompatActivity {
                     }else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(MainCaf.this);
                         builder.setTitle("Что-то не так")
-                                .setMessage("Номер обязан содержать только цифры и не более 4х символов или \nВы ввели конечным или начальным кабинетом, кабинет нового корпуса")
+                                .setMessage("Номер обязан содержать только цифры и не более 4х символов или \n" +
+                                        "Вы ввели конечным или начальным кабинетом, кабинет нового корпуса.\n" +
+                                        "Если Вы стоите у входа введите в первое поле Вход или вход\n")
                                 .setCancelable(false)
                                 .setNegativeButton("ОК, сейчас исправлю", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) { dialog.cancel();

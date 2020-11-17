@@ -5,7 +5,7 @@
     <string name="gid">Прогрмма разрабоната студентом МГТУ Станкин Коноваловым Федором Михайловичом</string>
     <string name="caf">Найти кафедру</string>
     <string name="txtCredits">stankin.project.findway@mail.ru</string>
-    <string name="ver">Версия приложения 1.0.1</string>
+    <string name="ver">Версия приложения 1.1.0</string>
     <string name="aud">Найти аутидорию</string>
     <string name="zagolovok">Гид по МГТУ СТАНКИН</string>
     <string name="text1">Введите номер аудитории рядом с Вами и номер нужной Вам</string>
@@ -20,5 +20,8 @@
     <string name="writedata">Введите дату начала и конца дисциплины</string>
     <string name="edd">добавить</string>
     <string name="hintmask">ДДММДДММ</string>
-    <string name = "perswit">Дисциплина через неделю или нет</string>
+    <string name="audi">Введите номер аудитории</string>
+    <string name="perswit">Дисциплина через неделю или нет</string>
+    <string name="delldw">Удалить распиание дня</string>
+    <string name="xx">title</string>
 </resources>
