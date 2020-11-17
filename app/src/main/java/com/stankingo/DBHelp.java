@@ -12,9 +12,10 @@ public class DBHelp implements Parcelable {
     public String data_end = "";
     public String period = "";
     public String num = "";
+    public String aud = "";
 
     public String toOneStr(){
-        String str = day + ',' + classes + ',' + data_start + ',' + data_end + ',' + period + ',' + num + '\n';
+        String str = day + ',' + classes + ',' + data_start + ',' + data_end + ',' + period + ',' + num + ',' + aud + '\n';
         return str;
     }
 
@@ -25,15 +26,17 @@ public class DBHelp implements Parcelable {
         data_end = in.readString();
         period = in.readString();
         num = in.readString();
+        aud = in.readString();
     }
 
-    public DBHelp (String d, String cl, String ds, String de, String p, String n){
+    public DBHelp (String d, String cl, String ds, String de, String p, String n, String a){
         day = d;
         classes = cl;
         data_start = ds;
         data_end = de;
         period = p;
         num = n;
+        aud = a;
     }
 
     @Override

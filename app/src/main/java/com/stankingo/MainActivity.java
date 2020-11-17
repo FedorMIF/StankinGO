@@ -1,33 +1,37 @@
 package com.stankingo;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
-import android.app.Activity;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
+
 
 public class MainActivity extends Activity {
 
     private int STORAGE_PERMISSION_CODE = 1;
     private static int SPLASH_TIME_OUT = 4000;
     static ArrayList<DBHelp> data = new ArrayList<>();
+    Context cc;
 
     private void requestStoragePermission(){
         if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,Manifest.permission.READ_EXTERNAL_STORAGE)){
@@ -54,12 +58,12 @@ public class MainActivity extends Activity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Load();
-
 
 
 //        new Handler().postDelayed(new Runnable() {
@@ -80,6 +84,7 @@ public class MainActivity extends Activity {
         }
 
     }
+
     public void onClickBtn( View v ) {
         switch (v.getId()) {
             case R.id.but_Audi:
@@ -102,7 +107,6 @@ public class MainActivity extends Activity {
                 break;
         }
     }
-
     public void Load(){
         if (data.size() == 0) {
             File sdcard = Environment.getExternalStorageDirectory();
@@ -141,8 +145,8 @@ public class MainActivity extends Activity {
     }
 
     public DBHelp Edd_Class(String str){
-        String[] arr = str.split(",", 6);
-        DBHelp dbh = new DBHelp(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);
+        String[] arr = str.split(",", 7);
+        DBHelp dbh = new DBHelp(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6]);
         return dbh;
     }
 

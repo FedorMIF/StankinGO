@@ -1,14 +1,16 @@
 package com.stankingo;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.app.Activity;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
 import static com.stankingo.MainActivity.data;
 
 public class MainClasses extends Activity {
@@ -46,13 +48,12 @@ public class MainClasses extends Activity {
             else if (data.get(i).day.equals("Суббота")) sut = sut + " " + data.get(i).num + ": " + data.get(i).classes;
         }
 
-
-        pl1 = (TextView) findViewById(R.id.pole1); pl1.setText(mon);
-        pl2 = (TextView) findViewById(R.id.pole2); pl2.setText(tue);
-        pl3 = (TextView) findViewById(R.id.pole3); pl3.setText(wed);
-        pl4 = (TextView) findViewById(R.id.pole4); pl4.setText(thur);
-        pl5 = (TextView) findViewById(R.id.pole5); pl5.setText(fri);
-        pl6 = (TextView) findViewById(R.id.pole6); pl6.setText(sut);
+        pl1 = (TextView) findViewById(R.id.pole1); pl1.setText(mon); pl1.setClickable(true);
+        pl2 = (TextView) findViewById(R.id.pole2); pl2.setText(tue); pl2.setClickable(true);
+        pl3 = (TextView) findViewById(R.id.pole3); pl3.setText(wed); pl3.setClickable(true);
+        pl4 = (TextView) findViewById(R.id.pole4); pl4.setText(thur); pl4.setClickable(true);
+        pl5 = (TextView) findViewById(R.id.pole5); pl5.setText(fri); pl5.setClickable(true);
+        pl6 = (TextView) findViewById(R.id.pole6); pl6.setText(sut); pl6.setClickable(true);
     }
 
     public void onClickWeek( View v ) {
@@ -75,6 +76,7 @@ public class MainClasses extends Activity {
             case R.id.pole4:
                 Intent intent4 = new Intent(this, Day_Week.class);
                 intent4.putExtra("dw", "Четверг");
+                startActivity(intent4);
                 break;
             case R.id.pole5:
                 Intent intent5 = new Intent(this, Day_Week.class);

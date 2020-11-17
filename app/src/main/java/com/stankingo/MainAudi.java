@@ -1,7 +1,5 @@
 package com.stankingo;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -10,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,9 +41,14 @@ public class MainAudi extends AppCompatActivity {
         String res = src;
         String f[] = {"а","б","в","г","д","е","ж"};
         String t[] = {"a","b","c","d","e","f","g"};
-        for (int i = 0; i < 7; ++i)
-            if (src.contains(f[i]))
-                res = src.replace(f[i], t[i]);
+        if (src.equals("Вход") || src.equals("вход") || src.equals("Выход") || src.equals("выход")){
+            if (src.equals("Вход")  || src.equals("вход") ) res = "entry";
+            if (src.equals("Выход") || src.equals("выход") ) res = "exit";
+        } else {
+            for (int i = 0; i < 7; ++i)
+                if (src.contains(f[i]))
+                    res = src.replace(f[i], t[i]);
+        }
         return res;
     }
 
@@ -93,11 +99,11 @@ public class MainAudi extends AppCompatActivity {
                 else {
                     start_cabinet = toEnglish(editrstst1.getText().toString());
                     end_cabinet = toEnglish(editrstst2.getText().toString());
-                    if ((start_cabinet.length() <= 4) && (end_cabinet.length() <= 4) &&
+                    if ( ( (start_cabinet.length() <= 4) && (end_cabinet.length() <= 4) &&
                             (start_cabinet.charAt(0) <= '9' && start_cabinet.charAt(0) >= '0') && (start_cabinet.charAt(1) <= '9' && start_cabinet.charAt(1) >= '0') &&
                             (start_cabinet.charAt(2) <= '9' && start_cabinet.charAt(2) >= '0') && (end_cabinet.charAt(0) <= '9' && end_cabinet.charAt(0) >= '0') &&
                             (end_cabinet.charAt(1) <= '9' && end_cabinet.charAt(1) >= '0') && (end_cabinet.charAt(2) <= '9' && end_cabinet.charAt(2) >= '0') &&
-                            (start_cabinet.charAt(0) != '0' && end_cabinet.charAt(0) != '0')) {
+                            (start_cabinet.charAt(0) != '0' && end_cabinet.charAt(0) != '0') ) || ( start_cabinet.equals("entry") || end_cabinet.equals("exit") ) ) {
                         if (start_cabinet.charAt(0) == '0') {
                             start_build = "new";
                             start_level = start_cabinet.charAt(1);
@@ -124,6 +130,9 @@ public class MainAudi extends AppCompatActivity {
                                 else end_build = "oldold";
                                 end_level = end_cabinet.charAt(0);}
                         }
+
+                        if (start_cabinet.equals("entry")) {start_level = '1'; start_build = "old";}
+                        if (end_cabinet.equals("exit")) {end_level = '1'; end_build = "old";}
 
                         //собрание пути
                         if (start_build == end_build){
@@ -329,11 +338,13 @@ public class MainAudi extends AppCompatActivity {
 
                         way.setImageResource(getResources().getIdentifier(way_list.get(i),"drawable", getPackageName()));
                         waytxt.setText(way_text.get(i));
-
-                    }else {
+                    }else{
                         AlertDialog.Builder builder = new AlertDialog.Builder(MainAudi.this);
                         builder.setTitle("Что-то не так")
-                                .setMessage("Номер обязан содержать только цифры и не более 4х символов или \nВы ввели конечным или начальным кабинетом, кабинет нового корпуса")
+                                .setMessage("Номер обязан содержать только цифры и не более 4х символов или \n" +
+                                        "Вы ввели конечным или начальным кабинетом, кабинет нового корпуса.\n" +
+                                        "Если Вы стоите у входа введите в первое поле Вход или вход\n" +
+                                        "Если Вам надо к выходу то введите во второе поле Выход или выход\n")
                                 .setCancelable(false)
                                 .setNegativeButton("ОК, сейчас исправлю", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) { dialog.cancel();

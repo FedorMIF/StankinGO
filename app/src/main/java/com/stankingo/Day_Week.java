@@ -1,14 +1,18 @@
 package com.stankingo;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import java.io.File;
 import java.io.FileWriter;
+
 import static com.stankingo.MainActivity.data;
 
 public class Day_Week extends Activity {
@@ -19,7 +23,6 @@ public class Day_Week extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day_week);
-        String dms = getIntent().getStringExtra("list");
         dww = getIntent().getStringExtra("dw");
 
         Update();
@@ -30,10 +33,10 @@ public class Day_Week extends Activity {
     protected void onResume() {
         super.onResume();
         Update();
-        pl1.setClickable(true);pl2.setClickable(true);
-        pl3.setClickable(true);pl4.setClickable(true);
-        pl5.setClickable(true);pl6.setClickable(true);
-        pl7.setClickable(true);pl8.setClickable(true);
+        pl1.setClickable(true); pl2.setClickable(true);
+        pl3.setClickable(true); pl4.setClickable(true);
+        pl5.setClickable(true); pl6.setClickable(true);
+        pl7.setClickable(true); pl8.setClickable(true);
     }
 
     public void Update(){
@@ -43,21 +46,29 @@ public class Day_Week extends Activity {
         for (int i = 0; i < data.size(); i++)
             if (data.get(i).day.equals(dww)) {
                 if (data.get(i).num.equals("1"))
-                    one = one + " " + data.get(i).classes + " (" + data.get(i).data_start + "-" + data.get(i).data_end + ")." + data.get(i).period + ", ";
+                    one = one + " " + data.get(i).classes + " (" + data.get(i).data_start + "-" +
+                            data.get(i).data_end + ")." + data.get(i).period + ", " + data.get(i).aud + ", ";
                 if (data.get(i).num.equals("2"))
-                    tow = tow + " " + data.get(i).classes + " (" + data.get(i).data_start + "-" + data.get(i).data_end + ")." + data.get(i).period + ", ";
+                    tow = tow + " " + data.get(i).classes + " (" + data.get(i).data_start + "-" +
+                            data.get(i).data_end + ")." + data.get(i).period + ", " + data.get(i).aud + ", ";
                 if (data.get(i).num.equals("3"))
-                    three = three + " " + data.get(i).classes + " (" + data.get(i).data_start + "-" +data.get(i).data_end + ")." + data.get(i).period + ", ";
+                    three = three + " " + data.get(i).classes + " (" + data.get(i).data_start + "-" +
+                            data.get(i).data_end + ")." + data.get(i).period + ", " + data.get(i).aud + ", ";
                 if (data.get(i).num.equals("4"))
-                    four = four + " " + data.get(i).classes + " (" + data.get(i).data_start + "-" +data.get(i).data_end + ")." + data.get(i).period + ", ";
+                    four = four + " " + data.get(i).classes + " (" + data.get(i).data_start + "-" +
+                            data.get(i).data_end + ")." + data.get(i).period + ", " + data.get(i).aud + ", ";
                 if (data.get(i).num.equals("5"))
-                    five = five + " " + data.get(i).classes + " (" + data.get(i).data_start + "-" +data.get(i).data_end + ")." + data.get(i).period + ", ";
+                    five = five + " " + data.get(i).classes + " (" + data.get(i).data_start + "-" +
+                            data.get(i).data_end + ")." + data.get(i).period + ", " + data.get(i).aud + ", ";
                 if (data.get(i).num.equals("6"))
-                    six = six + " " + data.get(i).classes + " (" + data.get(i).data_start + "-" +data.get(i).data_end + ")." + data.get(i).period + ", ";
+                    six = six + " " + data.get(i).classes + " (" + data.get(i).data_start + "-" +
+                            data.get(i).data_end + ")." + data.get(i).period + ", " + data.get(i).aud + ", ";
                 if (data.get(i).num.equals("7"))
-                    seven = seven + " " + data.get(i).classes + " (" + data.get(i).data_start + "-" +data.get(i).data_end + ")." + data.get(i).period + ", ";
+                    seven = seven + " " + data.get(i).classes + " (" + data.get(i).data_start + "-" +
+                            data.get(i).data_end + ")." + data.get(i).period + ", " + data.get(i).aud + ", ";
                 if (data.get(i).num.equals("8"))
-                    eight = eight + " " + data.get(i).classes + " (" + data.get(i).data_start + "-" +data.get(i).data_end + ")." + data.get(i).period + ", ";
+                    eight = eight + " " + data.get(i).classes + " (" + data.get(i).data_start + "-" +
+                            data.get(i).data_end + ")." + data.get(i).period + ", " + data.get(i).aud + ", ";
             }
 
         pl1 = (TextView) findViewById(R.id.pole1); pl1.setText(one); pl1.setClickable(false);
@@ -132,14 +143,10 @@ public class Day_Week extends Activity {
         Button r = (Button) findViewById(R.id.red);
         if (v.getId() == R.id.red) {
             if (flag == 0) {
-                pl1.setClickable(true);
-                pl2.setClickable(true);
-                pl3.setClickable(true);
-                pl4.setClickable(true);
-                pl5.setClickable(true);
-                pl6.setClickable(true);
-                pl7.setClickable(true);
-                pl8.setClickable(true);
+                pl1.setClickable(true); pl2.setClickable(true);
+                pl3.setClickable(true); pl4.setClickable(true);
+                pl5.setClickable(true); pl6.setClickable(true);
+                pl7.setClickable(true); pl8.setClickable(true);
                 pl1.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
                 pl2.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
                 pl3.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
@@ -165,13 +172,36 @@ public class Day_Week extends Activity {
                 ListToString();
             }
         }
+        if (v.getId() == R.id.dell){
+
+            new AlertDialog.Builder(this).setTitle("Вы не ошиблись?")
+                    .setMessage("Вы действительно хотите удалить все расписание этого дня?")
+                    .setPositiveButton("ДA", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
+                            for (int ii = 0; ii < data.size(); ii++)
+                                if (data.get(ii).day.equals(dww)){
+                                    data.remove(ii); ii--;
+                                }
+                            Update();
+                            ListToString();
+                        }
+                    })
+                    .setNegativeButton("НЕТ", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
+        }
     }
 
     public void ListToString(){
         mass = "";
         for (int i = 0; i < data.size(); i++){
-            mass = String.format("%s%s,%s,%s,%s,%s,%s\n", mass, data.get(i).day, data.get(i).classes,
-                    data.get(i).data_start, data.get(i).data_end, data.get(i).period, data.get(i).num);
+            mass = String.format("%s%s,%s,%s,%s,%s,%s,%s\n", mass, data.get(i).day, data.get(i).classes,
+                    data.get(i).data_start, data.get(i).data_end, data.get(i).period, data.get(i).num, data.get(i).aud);
         }
         try{
             File gpxfile = new File(getApplicationContext().getFilesDir(),"rasp.txt");
