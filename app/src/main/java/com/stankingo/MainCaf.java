@@ -17,58 +17,32 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-;
 
 public class MainCaf extends AppCompatActivity {
 
     Button Back;
-    String data[] = {"Выход","Кафедра станков", "Кафедра философии", "Кафедра теоретической механики и сопротивления материалов",  "Кафедра технологии машиностроения", "Кафедра экономики и управления предприятием",
+    String data[] = {"Выход","Ректорат","Кафе","Кафедра станков", "Кафедра философии", "Кафедра теоретической механики и сопротивления материалов",  "Кафедра технологии машиностроения", "Кафедра экономики и управления предприятием",
             "Кафедра инженерной экологии и безопасности жизнедеятельности", "Клуб", "Спортзал",
             "Кафедра электротехники, электроники и автоматики", "Профком", "Кафедра композиционных материалов",
             "Кафедра информационных технологий и вычислительных систем", "Кафедра инструментальной техники и технологии формообразования",
             "Кафедра высокоэффективных технологий обработки", "Деканат"};
 
-    String num[] = {"501", "507", "450a", "416", "339", "320", "327", "328", "346", "204", "203", "217", "243", "222", "233"};
-
-    String arr[] = {"exit","510", "509", "508", "511", "506", "507", "505", "504", "503", "502", "501",
-            "447", "448", "446", "445", "443", "444", "445", "441", "440", "439", "449", "450", "450a", "450b", "450c",
-            "327", "322", "323", "324", "325", "326", "333", "332", "331", "320", "328",
-            "233", "225", "224", "223", "222", "235", "234", "236", "237", "238", "239", "221", "220", "219", "218"};
+    String num[] = {"exit","rektor","kafe","501", "507", "450a", "416", "339", "320", "327", "328", "346", "204", "203", "217", "243", "222", "233"};
 
     String start_cabinet, end_cabinet, start_build, end_build;
     char start_level, end_level;
     int pos, i;
     ArrayList<String> way_list = new ArrayList<>(10);
     ArrayList<String> way_text = new ArrayList<>(10);
-    List<String> oldau = new ArrayList<>();
     TextView editrstst1;
     Button next2, prev2;
     ImageView way2;
     TextView waytxt2;
 
-    public static String toEnglish(String src)
-    {
-        String res = src;
-        String f[] = {"а","б","в","г","д","е","ж"};
-        String t[] = {"a","b","c","d","e","f","g"};
-        if (src.equals("Вход") || src.equals("вход") ) { res = "entry";
-        } else {
-            for (int i = 0; i < 7; ++i)
-                if (src.contains(f[i]))
-                    res = src.replace(f[i], t[i]);
-        }
-        return res;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_caf);
-
-        oldau.addAll(Arrays.asList(arr));
 
         way2 = (ImageView) findViewById(R.id.way_view2);
         next2 = (Button) findViewById(R.id.next_step2);
@@ -128,13 +102,9 @@ public class MainCaf extends AppCompatActivity {
                     alert.show();
                 }
                 else {way2.setVisibility(View.VISIBLE);
-                    start_cabinet = toEnglish(editrstst1.getText().toString());
+                    start_cabinet = MainAudi.toEnglish(editrstst1.getText().toString());
                     end_cabinet = num[pos];
-                    if ( ( (start_cabinet.length() <= 4) && (end_cabinet.length() <= 4) &&
-                            (start_cabinet.charAt(0) <= '9' && start_cabinet.charAt(0) >= '0') && (start_cabinet.charAt(1) <= '9' && start_cabinet.charAt(1) >= '0') &&
-                            (start_cabinet.charAt(2) <= '9' && start_cabinet.charAt(2) >= '0') && (end_cabinet.charAt(0) <= '9' && end_cabinet.charAt(0) >= '0') &&
-                            (end_cabinet.charAt(1) <= '9' && end_cabinet.charAt(1) >= '0') && (end_cabinet.charAt(2) <= '9' && end_cabinet.charAt(2) >= '0') )
-                            || ( start_cabinet.equals("entry") || end_cabinet.equals("exit") ) ) {
+                    if ( MainAudi.oldau.equals(start_cabinet) || MainAudi.oldoldau.equals(start_cabinet) || MainAudi.newau.equals(start_cabinet) ) {
                         if (start_cabinet.charAt(0) == '0') {
                             start_build = "new";
                             start_level = start_cabinet.charAt(1);
@@ -144,12 +114,12 @@ public class MainCaf extends AppCompatActivity {
                                 end_level = end_cabinet.charAt(1);}
                             else{
                                 //test.setText("Вы на " + start_cabinet.charAt(1) + "м этаже нового корпуса" + " Вам надо на " + end_cabinet.charAt(0) + "й этаж старого корпуса");
-                                if (oldau.contains(end_cabinet)) end_build ="old";
+                                if (MainAudi.oldau.contains(end_cabinet)) end_build ="old";
                                 else end_build = "oldold";
                                 end_level = end_cabinet.charAt(0);}
                         } else {
                             start_build = "oldold";
-                            if (oldau.contains(start_cabinet)) start_build ="old";
+                            if (MainAudi.oldau.contains(start_cabinet)) start_build ="old";
                             start_level = start_cabinet.charAt(0);
                             if (end_cabinet.charAt(0) == '0'){
                                 //test.setText("Вы на " + start_cabinet.charAt(0) + "м этаже старого корпуса" + " Вам надо на " + end_cabinet.charAt(1) + "й этаж нового курпуса");
@@ -157,15 +127,20 @@ public class MainCaf extends AppCompatActivity {
                                 end_level = end_cabinet.charAt(1);}
                             else{
                                 //test.setText("Вы на " + start_cabinet.charAt(0) + "м этаже старого корпуса" + " Вам надо на " + end_cabinet.charAt(0) + "й этаж старого корпуса");
-                                if (oldau.contains(end_cabinet)) end_build ="old";
+                                if (MainAudi.oldau.contains(end_cabinet)) end_build ="old";
                                 else end_build = "oldold";
                                 end_level = end_cabinet.charAt(0);}
                         }
 
+                        //исключения
                         if (start_cabinet.equals("entry")) {start_level = '1'; start_build = "old";}
                         if (end_cabinet.equals("exit")) {end_level = '1'; end_build = "old";}
+                        if (start_cabinet.equals("kafe")) {start_level = '3'; start_build = "new";}
+                        if (end_cabinet.equals("kafe")) {end_level = '3'; end_build = "new";}
+                        if (start_cabinet.equals("rektor")) {start_level = '5'; start_build = "new";}
+                        if (end_cabinet.equals("rektor")) {end_level = '5'; end_build = "new";}
 
-                        //собрание пути
+                        //собирание пути
                         if (start_build == end_build){
                             way_list.add("au"+start_cabinet);
                             way_text.add("Вы тут");
