@@ -19,16 +19,36 @@ import java.util.List;
 
 public class MainAudi extends AppCompatActivity {
 
-    String start_cabinet, end_cabinet, start_build, end_build, st_cab, e_cab;
+    String start_cabinet, end_cabinet, start_build, end_build;
     char start_level, end_level;
     int i;
-    String arr[] = {"510", "509", "508", "511", "506", "507", "505", "504", "503", "502", "501",
+    static String arr[] = {"510", "509", "508", "511", "506", "507", "505", "504", "503", "502", "501",
                     "447", "448", "446", "445", "443", "444", "445", "441", "440", "439", "449", "450", "450a", "450б", "450в",
                     "327", "322", "323", "324", "325", "326", "333", "332", "331", "320", "328",
                     "233", "225", "224", "223", "222", "235", "234", "236", "237", "238", "239", "221", "220", "219", "218"};
+
+    static String newaud[] = {"0201", "0202", "0203", "0206", "0207", "0208", "0209", "0210", "0211",
+                    "0303", "0304", "0305", "0306", "0307", "0308", "0309", "0310", "0311", "0312a",
+                    "0402", "0403", "0404", "0405", "0406", "0407", "0408", "0409", "0410", "0411",
+                    "0505", "0506", "0507", "0508", "0511", "0510", "0513", "0514", "0515", "0516", "0517",
+                    "0603", "0604", "0610", "0606", "0607", "0608", "0609", "0611", "0612", "0613", "0614",
+                    "0615", "0617", "0618", "0619", "0620", "0621", "0622", "0623", "0732",
+                    "0801", "0802", "0803", "0804", "0806", "0807", "0809", "0810", "0811", "0812",
+                    "0903", "0904", "0905", "0906", "0907", "0908", "0909", "0910", "0911", "0913", "0918",
+                    "0919", "0921", "0922", "0923", "0924"};
+
+    static String oldoldaud[] = {"201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212",
+                    "213", "214", "215", "216", "217", "240a", "240b", "240c", "240d", "240e", "240f", "240g",
+                    "241", "242", "243", "244", "246", "247", "249", "249b", "249c", "250", "251", "254", "255", "256", "257",
+                    "301", "302", "303", "304", "305", "306", "306a", "307", "308", "309", "310",
+                    "311", "312", "313", "314", "314a", "339", "340", "341", "342", "343", "346", "349",
+                    "419", "417", "416", "415", "414", "413", "412", "411", "409", "408", "406", "405", "404", "403", "401"};
+
     ArrayList<String> way_list = new ArrayList<>(10);
     ArrayList<String> way_text = new ArrayList<>(10);
-    List<String> oldau = new ArrayList<>();
+    static List<String> oldau = new ArrayList<>();
+    static List<String> oldoldau = new ArrayList<>();
+    static List<String> newau = new ArrayList<>();
     EditText editrstst1;
     EditText editrstst2;
     Button next, prev;
@@ -36,15 +56,17 @@ public class MainAudi extends AppCompatActivity {
     TextView waytxt;
     int flag = 1;
 
-    public static String toEnglish(String src)
-    {
+    public static String toEnglish(String src) {
         String res = src;
-        String f[] = {"а","б","в","г","д","е","ж"};
-        String t[] = {"a","b","c","d","e","f","g"};
-        if (src.equals("Вход") || src.equals("вход") || src.equals("Выход") || src.equals("выход")){
-            if (src.equals("Вход")  || src.equals("вход") ) res = "entry";
-            if (src.equals("Выход") || src.equals("выход") ) res = "exit";
-        } else {
+        String f[] = {"а", "б", "в", "г", "д", "е", "ж"};
+        String t[] = {"a", "b", "c", "d", "e", "f", "g"};
+        if (src.equals("Вход") || src.equals("вход") || src.equals("Выход") || src.equals("выход")) {
+            if (src.equals("Вход") || src.equals("вход")) res = "entry";
+            if (src.equals("Выход") || src.equals("выход")) res = "exit";
+        } else if( src.equals("кафе") || src.equals("Кафе") ) { res = "kafe";
+        } else if( src.equals("Ректорат") || src.equals("ректорат") ||
+                src.equals("Ректор") || src.equals("ректор") ) { res = "rekror";
+        }else {
             for (int i = 0; i < 7; ++i)
                 if (src.contains(f[i]))
                     res = src.replace(f[i], t[i]);
@@ -62,6 +84,8 @@ public class MainAudi extends AppCompatActivity {
 //        actionBar.setDisplayHomeAsUpEnabled(false);
 
         oldau.addAll(Arrays.asList(arr));
+        oldoldau.addAll(Arrays.asList(MainAudi.oldoldaud));
+        newau.addAll(Arrays.asList(MainAudi.newaud));
 
         editrstst1 = (EditText) findViewById(R.id.strtAudi);
         editrstst2 = (EditText) findViewById(R.id.endAudi);
@@ -99,11 +123,10 @@ public class MainAudi extends AppCompatActivity {
                 else {
                     start_cabinet = toEnglish(editrstst1.getText().toString());
                     end_cabinet = toEnglish(editrstst2.getText().toString());
-                    if ( ( (start_cabinet.length() <= 4) && (end_cabinet.length() <= 4) &&
-                            (start_cabinet.charAt(0) <= '9' && start_cabinet.charAt(0) >= '0') && (start_cabinet.charAt(1) <= '9' && start_cabinet.charAt(1) >= '0') &&
-                            (start_cabinet.charAt(2) <= '9' && start_cabinet.charAt(2) >= '0') && (end_cabinet.charAt(0) <= '9' && end_cabinet.charAt(0) >= '0') &&
-                            (end_cabinet.charAt(1) <= '9' && end_cabinet.charAt(1) >= '0') && (end_cabinet.charAt(2) <= '9' && end_cabinet.charAt(2) >= '0') &&
-                            (start_cabinet.charAt(0) != '0' && end_cabinet.charAt(0) != '0') ) || ( start_cabinet.equals("entry") || end_cabinet.equals("exit") ) ) {
+                    if (oldau.equals(start_cabinet) || oldoldau.equals(start_cabinet) || newau.equals(start_cabinet) ||
+                            oldau.equals(end_cabinet) || oldoldau.equals(end_cabinet) || newau.equals(end_cabinet) ||
+                            start_cabinet.equals("entry") || start_cabinet.equals("kafe") || start_cabinet.equals("rektor") ||
+                            end_cabinet.equals("exit") || end_cabinet.equals("kafe") || end_cabinet.equals("rektor")) {
                         if (start_cabinet.charAt(0) == '0') {
                             start_build = "new";
                             start_level = start_cabinet.charAt(1);
@@ -131,11 +154,16 @@ public class MainAudi extends AppCompatActivity {
                                 end_level = end_cabinet.charAt(0);}
                         }
 
+                        //исключения
                         if (start_cabinet.equals("entry")) {start_level = '1'; start_build = "old";}
                         if (end_cabinet.equals("exit")) {end_level = '1'; end_build = "old";}
+                        if (start_cabinet.equals("kafe")) {start_level = '3'; start_build = "new";}
+                        if (end_cabinet.equals("kafe")) {end_level = '3'; end_build = "new";}
+                        if (start_cabinet.equals("rektor")) {start_level = '5'; start_build = "new";}
+                        if (end_cabinet.equals("rektor")) {end_level = '5'; end_build = "new";}
 
-                        //собрание пути
-                        if (start_build == end_build){
+                        //собирание пути
+                        if (start_build.equals(end_build)){
                             way_list.add("au"+start_cabinet);
                             way_text.add("Вы тут");
                             if (start_level == end_level){
@@ -340,11 +368,13 @@ public class MainAudi extends AppCompatActivity {
                         waytxt.setText(way_text.get(i));
                     }else{
                         AlertDialog.Builder builder = new AlertDialog.Builder(MainAudi.this);
-                        builder.setTitle("Что-то не так")
-                                .setMessage("Номер обязан содержать только цифры и не более 4х символов или \n" +
-                                        "Вы ввели конечным или начальным кабинетом, кабинет нового корпуса.\n" +
-                                        "Если Вы стоите у входа введите в первое поле Вход или вход\n" +
-                                        "Если Вам надо к выходу то введите во второе поле Выход или выход\n")
+                        builder.setTitle("Что-то не так (︶︹︺) ")
+                                .setMessage("Проверьте правильность ввода:\n" +
+                                        "1.Номер обязан содержать только цифры и не более 4х символов или \n" +
+                                        "2.Если Вы стоите у входа введите в первое поле Вход или вход\n" +
+                                        "3.Если Вам надо к выходу то введите во второе поле Выход или выход\n" +
+                                        "4.Если Вам надо в кафе или Вы стоите около кафе, то в поля можно вписать Кафе или кафе\n" +
+                                        "5.Если Вам надо в ректорат или Вы стоите около ректората, то в поля можно вписать Ректорат или ректорат")
                                 .setCancelable(false)
                                 .setNegativeButton("ОК, сейчас исправлю", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) { dialog.cancel();
