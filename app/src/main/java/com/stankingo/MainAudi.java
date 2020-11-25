@@ -23,12 +23,14 @@ public class MainAudi extends AppCompatActivity {
     char start_level, end_level;
     int i;
     static String[] per = {"224a", "226", "227", "228", "229", "230", "231", "232"};
+
     static String[] arr = {"510", "509", "508", "511", "506", "507", "505", "504", "503", "502", "501",
                     "447", "448", "446", "445", "443", "444", "445", "441", "440", "439", "449", "450", "450a", "450б", "450в",
                     "327", "322", "323", "324", "325", "326", "333", "332", "331", "320", "328",
                     "233", "225", "224", "223", "222", "235", "234", "236", "237", "238", "239", "221", "220", "219", "218"};
 
-    static String[] newaud = {"0201", "0202", "0203", "0206", "0207", "0208", "0209", "0210", "0211",
+    static String[] newaud = { "0102", "0102a", "0103", "0105", "0106",
+                    "0201", "0202", "0203", "0206", "0207", "0208", "0209", "0210", "0211",
                     "0303", "0304", "0305", "0306", "0307", "0308", "0309", "0310", "0311", "0312a",
                     "0402", "0403", "0404", "0405", "0406", "0407", "0408", "0409", "0410", "0411",
                     "0505", "0506", "0507", "0508", "0511", "0510", "0513", "0514", "0515", "0516", "0517",
@@ -45,8 +47,8 @@ public class MainAudi extends AppCompatActivity {
                     "311", "312", "313", "314", "314a", "339", "340", "341", "342", "343", "346", "349",
                     "419", "417", "416", "415", "414", "413", "412", "411", "409", "408", "406", "405", "404", "403", "401"};
 
-    ArrayList<String> way_list = new ArrayList<>(10);
-    ArrayList<String> way_text = new ArrayList<>(10);
+    ArrayList<String> way_list = new ArrayList<>(20);
+    ArrayList<String> way_text = new ArrayList<>(20);
     List<String> oldau = new ArrayList<>();
     List<String> oldoldau = new ArrayList<>();
     List<String> newau = new ArrayList<>();
@@ -130,25 +132,22 @@ public class MainAudi extends AppCompatActivity {
                             (perau.contains(end_cabinet) ||(oldau.contains(end_cabinet) || oldoldau.contains(end_cabinet) || newau.contains(end_cabinet))) ||
                             (start_cabinet.equals("entry") || start_cabinet.equals("kafe") || start_cabinet.equals("rektor"))||
                             (end_cabinet.equals("exit") || end_cabinet.equals("kafe") || end_cabinet.equals("rektor")) ) {
-                        if (newau.contains(start_cabinet)) {
-                            start_build = "new";
-                            start_level = start_cabinet.charAt(1);
-                            if (newau.contains(end_cabinet)){
-                                //test.setText("Вы на " + start_cabinet.charAt(1) + "м этаже нового корпуса" + " Вам надо на " + end_cabinet.charAt(1) + "й этаж нового корпуса");
-                                end_build = "new";
-                                end_level = end_cabinet.charAt(1);}
+
+                        if (newau.contains(start_cabinet)) { start_build = "new"; start_level = start_cabinet.charAt(1);
+                            if (newau.contains(end_cabinet)){ end_build = "new"; end_level = end_cabinet.charAt(1);}
                             else if (oldau.contains(end_cabinet)) {end_build ="old"; end_level = end_cabinet.charAt(0);}
                             else if (oldoldau.contains(end_cabinet)) {end_build = "oldold"; end_level = end_cabinet.charAt(0);}
                             else if (perau.contains(end_cabinet)) {end_build = "pereh"; end_level = end_cabinet.charAt(0);}
-
                         }
                         else if (oldau.contains(start_cabinet)) {start_build ="old"; start_level = start_cabinet.charAt(0);
                             if (newau.contains(end_cabinet)) {end_build ="new"; end_level = end_cabinet.charAt(1);}
+                            else if (oldau.contains(end_cabinet)) {end_build ="old"; end_level = end_cabinet.charAt(0);}
                             else if (oldoldau.contains(end_cabinet)) {end_build = "oldold"; end_level = end_cabinet.charAt(0);}
                             else if (perau.contains(end_cabinet)) {end_build = "pereh"; end_level = end_cabinet.charAt(0);}
                         }
                         else if (oldoldau.contains(start_cabinet)) {start_build = "oldold"; start_level = start_cabinet.charAt(0);
                             if (oldau.contains(end_cabinet)) {end_build ="old"; end_level = end_cabinet.charAt(0);}
+                            else if (oldoldau.contains(end_cabinet)) {end_build = "oldold"; end_level = end_cabinet.charAt(0);}
                             else if (newau.contains(end_cabinet)) {end_build = "new"; end_level = end_cabinet.charAt(1);}
                             else if (perau.contains(end_cabinet)) {end_build = "pereh"; end_level = end_cabinet.charAt(0);}
                         }
@@ -156,6 +155,7 @@ public class MainAudi extends AppCompatActivity {
                             if (oldau.contains(end_cabinet)) {end_build ="old"; end_level = end_cabinet.charAt(0);}
                             else if (newau.contains(end_cabinet)) {end_build = "new"; end_level = end_cabinet.charAt(0);}
                             else if (oldoldau.contains(end_cabinet)) {end_build = "oldold"; end_level = end_cabinet.charAt(0);}
+                            else if (perau.contains(end_cabinet)) {end_build = "pereh"; end_level = end_cabinet.charAt(0);}
                         }
 
                         //исключения
@@ -167,7 +167,7 @@ public class MainAudi extends AppCompatActivity {
                         if (end_cabinet.equals("rektor")) {end_level = '5'; end_build = "new";}
 
                         //собирание пути
-                        if (start_build.equals(end_build)){
+                        if (start_build == end_build){
                             way_list.add("au"+start_cabinet);
                             way_text.add("Вы тут");
                             if (start_level == end_level){
@@ -206,17 +206,28 @@ public class MainAudi extends AppCompatActivity {
                                     way_text.add("Вы в первом крыле старого корпуса");
 
                                     if (end_build.equals("old")) {
-                                        if (end_level != '2') {
-                                            way_list.add("upstairs2old");
+                                        if (end_level != '1') {
+                                            way_list.add("upstairs1old");
                                             way_text.add("Дойдите до лестницы и перейдите на "
-                                                    + end_level + "й этаж");
-
+                                                + end_level + "й этаж");
                                             way_list.add("downstairs" + end_level + end_build);
                                             way_text.add("Вы на " + end_level + "м этаже");
                                         }
                                     } else {
-                                        if (end_level != '1') {
-                                            way_list.add("upstairs1old");
+                                        way_list.add("upstairs1old");
+                                        way_text.add("Дойдите до лестницы перейдите на 2й этаж");
+
+                                        way_list.add("downstairs2old");
+                                        way_text.add("Вы на 2м этаже");
+
+                                        way_list.add("oldtooldold");// переход из старого в совсем старый
+                                        way_text.add("Перейдите по коридору в другое крыло старого корпуса");
+
+                                        way_list.add("oldtooldoldhere");// точка отправки после перехода
+                                        way_text.add("Вы во втором крыле старого корпуса");
+
+                                        if (end_level != '2') {
+                                            way_list.add("upstairs2oldold");
                                             way_text.add("Дойдите до лестницы и перейдите на "
                                                     + end_level + "й этаж");
 
@@ -389,7 +400,7 @@ public class MainAudi extends AppCompatActivity {
                             if (start_build.equals("pereh")) {
                                 way_list.add("au"+start_cabinet);
                                 way_text.add("Вы тут");
-                                if (end_build.equals("old")) {
+                                if (end_build.equals("old") || end_build.equals("oldold")) {
 
                                     way_list.add("perehtoold"); // найти файл перехода из перехода в страый
                                     way_text.add("Перейдите по леснице в старый корпус");
@@ -397,43 +408,43 @@ public class MainAudi extends AppCompatActivity {
                                     way_list.add("perehtooldhere");
                                     way_text.add("Вы в первом крыле старого корпуса");
 
-                                    if (end_level != '2') {
-                                        way_list.add("upstairs2old");
-                                        way_text.add("Дойдите до лестницы и перейдите на "
-                                                + end_level + "й этаж");
+                                    if (end_build.equals("oldold")){
 
-                                        way_list.add("downstairs" + end_level + end_build);
-                                        way_text.add("Вы на " + end_level + "м этаже");
+                                        way_list.add("upstairs1old");
+                                        way_text.add("Дойдите до лестницы перейдите на 2й этаж");
+
+                                        way_list.add("downstairs2old");
+                                        way_text.add("Вы на 2м этаже");
+
+                                        way_list.add("oldtooldold");// переход из старого в совсем старый
+                                        way_text.add("Перейдите по коридору в другое крыло старого корпуса");
+
+                                        way_list.add("oldtooldoldhere");// точка отправки после перехода
+                                        way_text.add("Вы во втором крыле старого корпуса");
+
+                                        if (end_level != '2') {
+                                            way_list.add("upstairs2oldold");
+                                            way_text.add("Дойдите до лестницы и перейдите на "
+                                                    + end_level + "й этаж");
+
+                                            way_list.add("downstairs" + end_level + end_build);
+                                            way_text.add("Вы на " + end_level + "м этаже");
+                                        }
+
+                                    } else {
+                                        if (end_level != '1') {
+                                            way_list.add("upstairs1old");
+                                            way_text.add("Дойдите до лестницы и перейдите на "
+                                                    + end_level + "й этаж");
+
+                                            way_list.add("downstairs" + end_level + end_build);
+                                            way_text.add("Вы на " + end_level + "м этаже");
+                                        }
                                     }
 
                                     way_list.add("au" + end_cabinet);
                                     way_text.add("Вам сюда");
 
-                                }
-                                else if (end_build.equals("oldold")){
-                                    way_list.add("perehtoold"); // найти файл перехода из перехода в страый
-                                    way_text.add("Перейдите по леснице в старый корпус");
-
-                                    way_list.add("perehtooldhere");
-                                    way_text.add("Вы в первом крыле старого корпуса");
-
-                                    way_list.add("oldtooldold");// переход из старого в совсем старый
-                                    way_text.add("Перейдите по коридору в другое крыло старого корпуса");
-
-                                    way_list.add("oldtooldoldhere");// точка отправки после перехода
-                                    way_text.add("Вы во втором крыле старого корпуса");
-
-                                    if (end_level != '2') {
-                                        way_list.add("upstairs2oldold");
-                                        way_text.add("Дойдите до лестницы и перейдите на "
-                                                + end_level + "й этаж");
-
-                                        way_list.add("downstairs" + end_level + end_build);
-                                        way_text.add("Вы на " + end_level + "м этаже");
-                                    }
-
-                                    way_list.add("au" + end_cabinet);
-                                    way_text.add("Вам сюда");
                                 }
                                 else if (end_build.equals("new")){
                                     way_list.add("perehtonew");
@@ -467,12 +478,12 @@ public class MainAudi extends AppCompatActivity {
                         AlertDialog.Builder builder = new AlertDialog.Builder(MainAudi.this);
                         builder.setTitle("Что-то не так (︶︹︺) ")
                                 .setMessage("Проверьте правильность ввода:\n" +
-                                        "1.Номер обязан содержать только цифры и не более 4х символов или \n" +
+                                        "1.Номер обязан содержать только цифры и не более 5ти символов\n" +
                                         "2.Если Вы стоите у входа введите в первое поле Вход или вход\n" +
                                         "3.Если Вам надо к выходу то введите во второе поле Выход или выход\n" +
                                         "4.Если Вам надо в кафе или Вы стоите около кафе, то в поля можно вписать Кафе или кафе\n" +
                                         "5.Если Вам надо в ректорат или Вы стоите около ректората, то в поля можно вписать Ректорат или ректорат\n" +
-                                        "6.Такого кабинет нет")
+                                        "6.Такого кабинет нет ¯\\_(ツ)_/¯")
                                 .setCancelable(false)
                                 .setNegativeButton("ОК, сейчас исправлю", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) { dialog.cancel();

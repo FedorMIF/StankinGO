@@ -29,7 +29,7 @@
 
     <EditText
         android:id="@+id/endAudi"
-        android:layout_width="70dp"
+        android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
@@ -40,11 +40,12 @@
         android:textColorHighlight="#80131212"
         android:textColorLink="#141313"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
         android:id="@+id/strtAudi"
-        android:layout_width="73dp"
+        android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
@@ -55,6 +56,8 @@
         android:inputType="textPersonName"
         android:textColorHighlight="#800E0D0D"
         android:textColorLink="#141414"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -76,26 +79,29 @@
     <Button
         android:id="@+id/next_step"
         style="@android:style/Widget.Holo.Button.Small"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:onClick="onClickWayBtn"
         android:text="@string/butnext"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/prev_step"
         app:layout_constraintTop_toBottomOf="@+id/helptext" />
 
     <Button
         android:id="@+id/prev_step"
         style="@android:style/Widget.Holo.Button.Small"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:onClick="onClickWayBtn"
         android:text="@string/butprev"
+        app:layout_constraintEnd_toStartOf="@+id/next_step"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/helptext" />
 
@@ -113,7 +119,7 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toStartOf="@+id/endAudi"

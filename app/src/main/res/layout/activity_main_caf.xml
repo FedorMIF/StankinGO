@@ -22,36 +22,38 @@
     <Button
         android:id="@+id/next_step2"
         style="@android:style/Widget.Holo.Button.Small"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:onClick="onClickWayBtn2"
         android:text="@string/butnext"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/prev_step2"
         app:layout_constraintTop_toBottomOf="@+id/helptext2" />
 
     <Button
         android:id="@+id/prev_step2"
         style="@android:style/Widget.Holo.Button.Small"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:onClick="onClickWayBtn2"
         android:text="@string/butprev"
+        app:layout_constraintEnd_toStartOf="@+id/next_step2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/helptext2" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toStartOf="@+id/spinner_caf"
-        app:layout_constraintStart_toEndOf="@+id/strtAudi2"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:srcCompat="@android:drawable/ic_media_ff" />
 
@@ -71,13 +73,15 @@
 
     <EditText
         android:id="@+id/strtAudi2"
-        android:layout_width="70dp"
+        android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/hint"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 

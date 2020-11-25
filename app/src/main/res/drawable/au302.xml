@@ -581,4 +581,14 @@
         android:strokeWidth="1"
         android:strokeMiterLimit="10"
         android:pathData="M 119.2 254.3 C 121.519595949 254.3 123.4 256.180404051 123.4 258.5 C 123.4 260.819595949 121.519595949 262.7 119.2 262.7 C 116.880404051 262.7 115 260.819595949 115 258.5 C 115 256.180404051 116.880404051 254.3 119.2 254.3 Z" />
+    <path
+        android:strokeColor="#000000"
+        android:strokeWidth="3"
+        android:strokeMiterLimit="10"
+        android:pathData="M 205 229.4 L 205 235.9" />
+    <path
+        android:strokeColor="#000000"
+        android:strokeWidth="3"
+        android:strokeMiterLimit="10"
+        android:pathData="M 217.5 235.8 L 204 235.8" />
 </vector>

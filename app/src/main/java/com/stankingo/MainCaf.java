@@ -454,12 +454,12 @@ public class MainCaf extends AppCompatActivity {
                         AlertDialog.Builder builder = new AlertDialog.Builder(MainCaf.this);
                         builder.setTitle("Что-то не так (︶︹︺) ")
                                 .setMessage("Проверьте правильность ввода:\n" +
-                                        "1.Номер обязан содержать только цифры и не более 4х символов или \n" +
+                                        "1.Номер обязан содержать только цифры и не более 5ти символов или \n" +
                                         "2.Если Вы стоите у входа введите в первое поле Вход или вход\n" +
                                         "3.Если Вам надо к выходу то введите во второе поле Выход или выход\n" +
                                         "4.Если Вам надо в кафе или Вы стоите около кафе, то в поля можно вписать Кафе или кафе\n" +
                                         "5.Если Вам надо в ректорат или Вы стоите около ректората, то в поля можно вписать Ректорат или ректорат\n" +
-                                        "6.Такого кабинет нет")
+                                        "6.Такого кабинет нет ¯\\_(ツ)_/¯")
                                 .setCancelable(false)
                                 .setNegativeButton("ОК, сейчас исправлю", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) { dialog.cancel();

@@ -95,10 +95,10 @@ public class MainActivity extends Activity {
                 Intent intent2 = new Intent(this, MainCaf.class);
                 startActivity(intent2);
                 break;
-            case R.id.but_Cal:
-                Intent intent3 = new Intent(this, MainClasses.class);
-                startActivity(intent3);
-                break;
+//            case R.id.but_Cal:
+//                Intent intent3 = new Intent(this, MainClasses.class);
+//                startActivity(intent3);
+//                break;
             case R.id.but_Help:
                 Intent intent4 = new Intent(this, Help.class);
                 startActivity(intent4);
@@ -165,6 +165,15 @@ public class MainActivity extends Activity {
     public void onBackPressed() {
         data.clear();
         finish();
+    }
+
+    @Override
+    public void onDestroy(){
+        // Очистите все ресурсы. Это касается завершения работы
+        // потоков, закрытия соединений с базой данных и т. д.
+        data.clear();
+
+        super.onDestroy();
     }
 
 }
