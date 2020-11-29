@@ -170,8 +170,8 @@ public class Day_Week extends Activity {
     public void ListToString(){
         mass = "";
         for (int i = 0; i < data.size(); i++){
-            mass = String.format("%s%s,%s,%s,%s,%s,%s\n", mass, data.get(i).day, data.get(i).classes,
-                    data.get(i).data_start, data.get(i).data_end, data.get(i).period, data.get(i).num);
+            mass = String.format("%s%s,%s,%s,%s,%s,%s,%s\n", mass, data.get(i).day, data.get(i).classes,
+                    data.get(i).data_start, data.get(i).data_end, data.get(i).period, data.get(i).num, data.get(i).aud);
         }
         try{
             File gpxfile = new File(getApplicationContext().getFilesDir(),"rasp.txt");

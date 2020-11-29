@@ -26,7 +26,7 @@ public class MainAudi extends AppCompatActivity {
 
     static String[] arr = {"510", "509", "508", "511", "506", "507", "505", "504", "503", "502", "501",
                     "447", "448", "446", "445", "443", "444", "445", "441", "440", "439", "449", "450", "450a", "450б", "450в",
-                    "327", "322", "323", "324", "325", "326", "333", "332", "331", "320", "328",
+                    "327", "322", "323", "324", "325", "326", "333", "332", "331", "320", "328","exit", "entry",
                     "233", "225", "224", "223", "222", "235", "234", "236", "237", "238", "239", "221", "220", "219", "218"};
 
     static String[] newaud = { "0102", "0102a", "0103", "0105", "0106",
@@ -38,7 +38,7 @@ public class MainAudi extends AppCompatActivity {
                     "0615", "0617", "0618", "0619", "0620", "0621", "0622", "0623", "0732",
                     "0801", "0802", "0803", "0804", "0806", "0807", "0809", "0810", "0811", "0812",
                     "0903", "0904", "0905", "0906", "0907", "0908", "0909", "0910", "0911", "0913", "0918",
-                    "0919", "0921", "0922", "0923", "0924"};
+                    "0919", "0921", "0922", "0923", "0924", "kafe", "rektor"};
 
     static String[] oldoldaud = {"201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212",
                     "213", "214", "215", "216", "217", "240a", "240b", "240c", "240d", "240e", "240f", "240g",
@@ -159,12 +159,12 @@ public class MainAudi extends AppCompatActivity {
                         }
 
                         //исключения
-                        if (start_cabinet.equals("entry")) {start_level = '1'; start_build = "old";}
-                        if (end_cabinet.equals("exit")) {end_level = '1'; end_build = "old";}
-                        if (start_cabinet.equals("kafe")) {start_level = '3'; start_build = "new";}
-                        if (end_cabinet.equals("kafe")) {end_level = '3'; end_build = "new";}
-                        if (start_cabinet.equals("rektor")) {start_level = '5'; start_build = "new";}
-                        if (end_cabinet.equals("rektor")) {end_level = '5'; end_build = "new";}
+                        if (start_cabinet.equals("entry")) {start_level = '1';}
+                        if (end_cabinet.equals("exit")) {end_level = '1';}
+                        if (start_cabinet.equals("kafe")) {start_level = '3';}
+                        if (end_cabinet.equals("kafe")) {end_level = '3';}
+                        if (start_cabinet.equals("rektor")) {start_level = '5';}
+                        if (end_cabinet.equals("rektor")) {end_level = '5';}
 
                         //собирание пути
                         if (start_build == end_build){

@@ -24,12 +24,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class MainActivity extends Activity {
 
-    private int STORAGE_PERMISSION_CODE = 1;
-    private static int SPLASH_TIME_OUT = 4000;
+    private final int STORAGE_PERMISSION_CODE = 1;
     static ArrayList<DBHelp> data = new ArrayList<>();
     Context cc;
 
@@ -65,15 +65,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         Load();
 
-
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);
-//                startActivity(homeIntent);
-//                finish();
-//            }
-//        },SPLASH_TIME_OUT);
+        Date currentDate = new Date(System.currentTimeMillis());
 
         if ((ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) &&
                 (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)) {
@@ -83,22 +75,38 @@ public class MainActivity extends Activity {
             requestStoragePermission();
         }
 
+        NotificationReceiver.scheduleNotification(cc, 100 , "Пара началась", "Название пары");
+
     }
+
 
     public void onClickBtn( View v ) {
         switch (v.getId()) {
             case R.id.but_Audi:
                 Intent intent1 = new Intent(this, MainAudi.class);
                 startActivity(intent1);
+
                 break;
             case R.id.but_Caf:
                 Intent intent2 = new Intent(this, MainCaf.class);
                 startActivity(intent2);
                 break;
-//            case R.id.but_Cal:
-//                Intent intent3 = new Intent(this, MainClasses.class);
-//                startActivity(intent3);
-//                break;
+            case R.id.but_Cal:
+                Intent intent3 = new Intent(this, MainClasses.class);
+                startActivity(intent3);
+//                androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(MainActivity.this);
+//                builder.setTitle("В разработке")
+//                        .setMessage("Работаю над исправлением багов, надеюсь скоро выйдет\n" +
+//                                "       (´• ω •)        ")
+//                        .setCancelable(false)
+//                        .setNegativeButton("Удачи", new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id) {
+//                                dialog.cancel();
+//                            }
+//                        });
+//                androidx.appcompat.app.AlertDialog alert = builder.create();
+//                alert.show();
+                break;
             case R.id.but_Help:
                 Intent intent4 = new Intent(this, Help.class);
                 startActivity(intent4);
@@ -109,37 +117,26 @@ public class MainActivity extends Activity {
     }
     public void Load(){
         if (data.size() == 0) {
-            File sdcard = Environment.getExternalStorageDirectory();
-            //Создаём объект файла
-            File file = new File(getApplicationContext().getFilesDir(),"rasp.txt");
-            //Read text from file
-            StringBuilder text = new StringBuilder();
+            //try {
+                File sdcard = Environment.getExternalStorageDirectory();
+                //Создаём объект файла
+                File file = new File(getApplicationContext().getFilesDir(), "rasp.txt");
+                //Read text from file
+                StringBuilder text = new StringBuilder();
 
-            try {
-                BufferedReader br = new BufferedReader(new FileReader(file));
-                String line = "";
+                try {
+                    BufferedReader br = new BufferedReader(new FileReader(file));
+                    String line = "";
 
-                while ((line = br.readLine()) != null) {
-                    data.add(Edd_Class(line));
+                    while ((line = br.readLine()) != null) {
+                        data.add(Edd_Class(line));
+                    }
+                } catch (IOException e) {
+                    //Ошибка
                 }
-            }
-            catch (IOException e) {
-                //Ошибка
-            }
 
-            Log.d("Data", String.valueOf(text));
-//            try {
-//                InputStream db = ;
-//                BufferedReader br = new BufferedReader(new InputStreamReader(db));
-//                String str = "";
-//                while ((str = br.readLine()) != null) {
-//                    data.add(Edd_Class(str));
-//                }
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
+                Log.d("Data", String.valueOf(text));
+            //} catch (Exception e) { }
         }
 
     }
@@ -167,13 +164,17 @@ public class MainActivity extends Activity {
         finish();
     }
 
-    @Override
-    public void onDestroy(){
-        // Очистите все ресурсы. Это касается завершения работы
-        // потоков, закрытия соединений с базой данных и т. д.
-        data.clear();
 
-        super.onDestroy();
-    }
+
+//    @Override
+//    public void onDestroy(){
+//        // Очистите все ресурсы. Это касается завершения работы
+//        // потоков, закрытия соединений с базой данных и т. д.
+//        data.clear();
+//
+//        super.onDestroy();
+//    }
+
+
 
 }
