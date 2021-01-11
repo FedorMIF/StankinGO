@@ -75,7 +75,7 @@ public class MainActivity extends Activity {
             requestStoragePermission();
         }
 
-        NotificationReceiver.scheduleNotification(cc, 100 , "Пара началась", "Название пары");
+        //NotificationReceiver.scheduleNotification(cc, 100 , "Пара началась", "Название пары");
 
     }
 

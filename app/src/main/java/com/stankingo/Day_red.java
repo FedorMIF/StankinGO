@@ -11,6 +11,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileWriter;
+
 import static com.stankingo.MainActivity.data;
 
 public class Day_red extends Activity {
@@ -21,15 +24,21 @@ public class Day_red extends Activity {
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch sw1, sw2, sw3, sw4;
 
-    int flag = 0;
+    int flag = 0, fl = 0;
 
     @SuppressLint({"SetTextI18n", "CutPasteId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day_red);
-        ncl = getIntent().getStringExtra("ncl");
-        dw = getIntent().getStringExtra("dcl");
+        Update();
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void Update(){
+        flag = 0;
+        ncl = getIntent().getStringExtra("ncl"); // номер пары
+        dw = getIntent().getStringExtra("dcl"); // день недели
 
         sw1 = (Switch) findViewById(R.id.switch1); sw2 = (Switch) findViewById(R.id.switch2);
         sw3 = (Switch) findViewById(R.id.switch3); sw4 = (Switch) findViewById(R.id.switch4);
@@ -110,7 +119,6 @@ public class Day_red extends Activity {
                 }
             }
         }
-
     }
 
     CompoundButton.OnCheckedChangeListener listener = new CompoundButton.OnCheckedChangeListener() {
@@ -137,31 +145,66 @@ public class Day_red extends Activity {
         }
     };
 
+    //ВСЕ ИСАПРВИТЬ НЕ РАБОТАЕТ , ТОЧНЕЕ ВСЕ ХУЕВО РАБОТАЕТ МНОГОКРАТНОЕ ПОСВТОРЕНИЕ
+
+    public void check(){
+        for( int i = 0; i < data.size(); i++){
+
+        }
+    }
+
     public void eddbtn( View v ) {
         if (v.getId() == R.id.button2) {
             if (flag == 1 || flag == 0) {
+                saveData(); fl = 1;
                 n2.setVisibility(View.VISIBLE); d2.setVisibility(View.VISIBLE);
                 v2.setVisibility(View.VISIBLE); sw2.setVisibility(View.VISIBLE);
                 t2.setVisibility(View.VISIBLE); tt2.setVisibility(View.VISIBLE);
                 a2.setVisibility(View.VISIBLE); ta2.setVisibility(View.VISIBLE);
-                flag++;
+                toastedMes("Данные сохранены");
+                Update(); flag++;
                 return;
             }
             if (flag == 2) {
+                saveData(); fl = 1;
                 n3.setVisibility(View.VISIBLE); d3.setVisibility(View.VISIBLE);
                 v3.setVisibility(View.VISIBLE); sw3.setVisibility(View.VISIBLE);
                 t3.setVisibility(View.VISIBLE); tt3.setVisibility(View.VISIBLE);
                 a3.setVisibility(View.VISIBLE); ta3.setVisibility(View.VISIBLE);
+                toastedMes("Данные сохранены");
+                Update(); flag++;
+                return;
             }
             if (flag == 3) {
+                saveData(); fl = 1;
                 n4.setVisibility(View.VISIBLE); d4.setVisibility(View.VISIBLE);
                 v4.setVisibility(View.VISIBLE); sw4.setVisibility(View.VISIBLE);
                 t4.setVisibility(View.VISIBLE); tt4.setVisibility(View.VISIBLE);
                 a4.setVisibility(View.VISIBLE); ta4.setVisibility(View.VISIBLE);
+                toastedMes("Данные сохранены");
+                Update(); flag++;
+                return;
+            }
+            if (flag == 4) {
+                saveData(); fl = 1;
+                toastedMes("Данные сохранены");
                 Button btn = (Button) findViewById(R.id.button2);
+                Update();
                 btn.setVisibility(View.INVISIBLE);
             }
         }
+    }
+
+    public void toastedMes(String str){
+        Toast tos = Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT);
+        tos.show();
+    }
+
+    //int d = data.size();
+    @Override
+    public void onBackPressed() {
+        if (fl == 0) saveData();
+        finish();
     }
 
     public void changeData(int i, String d, String s, String a){
@@ -172,18 +215,33 @@ public class Day_red extends Activity {
         data.get(i).aud = a;
     }
 
-    //int d = data.size();
-    @Override
-    public void onBackPressed() {
+    public void ListToString(){
+        String mass = "";
+        for (int i = 0; i < data.size(); i++){
+            mass = String.format("%s%s,%s,%s,%s,%s,%s,%s\n", mass, data.get(i).day, data.get(i).classes,
+                    data.get(i).data_start, data.get(i).data_end, data.get(i).period, data.get(i).num, data.get(i).aud);
+        }
+        try{
+            File gpxfile = new File(getApplicationContext().getFilesDir(),"rasp.txt");
+            FileWriter writer = new FileWriter(gpxfile);
+            writer.append(mass);
+            writer.flush();
+            writer.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+
+        }
+    }
+
+    public void saveData(){
         int f1 = 0, f2 = 0 , f3 = 0, f4 = 0;
         for( int i = 0; i < data.size(); i++){
-            Toast tos = Toast.makeText(getApplicationContext(),
-                    "Нельзя удалить единственную запись", Toast.LENGTH_SHORT);
             if (data.get(i).classes.equals(cl1)) {
                 if (!cl1.equals(n1.getText().toString()) && f1 == 0) {
                     if (n1.getText().toString().equals("")) {
                         if (data.size() == 1) {
-                            tos.show();
+                            toastedMes("Нельзя удалить единственную запись");
                         } else {
                             data.remove(i);
                             i--;
@@ -203,7 +261,7 @@ public class Day_red extends Activity {
                 if (!cl2.equals(n2.getText().toString()) && f2 == 0) {
                     if (n2.getText().toString().equals("")) {
                         if (data.size() == 1) {
-                            tos.show();
+                            toastedMes("Нельзя удалить единственную запись");
                         } else {
                             data.remove(i);
                             i--;
@@ -223,7 +281,7 @@ public class Day_red extends Activity {
                 if (!cl3.equals(n3.getText().toString()) && f3 == 0) {
                     if (n3.getText().toString().equals("")) {
                         if (data.size() == 1) {
-                            tos.show();
+                            toastedMes("Нельзя удалить единственную запись");
                         } else {
                             data.remove(i);
                             i--;
@@ -243,7 +301,7 @@ public class Day_red extends Activity {
                 if (!cl4.equals(n4.getText().toString()) && f4 == 0) {
                     if (n1.getText().toString().equals("")) {
                         if (data.size() == 1) {
-                            tos.show();
+                            toastedMes("Нельзя удалить единственную запись");
                         } else {
                             data.remove(i);
                             i--;
@@ -260,7 +318,7 @@ public class Day_red extends Activity {
             }
 
         }
-// если не нашлась запись в базе, то записывает новые
+        // если не нашлась запись в базе, то записывает новые
         if (f1 == 0) {
             if (!n1.getText().toString().equals("")) {
                 String[] str = d1.getText().toString().split("-");
@@ -315,6 +373,6 @@ public class Day_red extends Activity {
                 data.add(db);
             }
         }
-        finish();
+        ListToString();
     }
 }

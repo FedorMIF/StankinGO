@@ -1,25 +1,30 @@
 package com.stankingo;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+
 import java.io.File;
 import java.io.FileWriter;
+
 import static com.stankingo.MainActivity.data;
 
 public class Day_Week extends Activity {
     TextView pl1, pl2, pl3, pl4, pl5, pl6, pl7, pl8, pl9;
-    String dww, mass;
+    String dww;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day_week);
-        String dms = getIntent().getStringExtra("list");
         dww = getIntent().getStringExtra("dw");
 
         Update();
@@ -167,8 +172,48 @@ public class Day_Week extends Activity {
         }
     }
 
+    public void toastedMes(String str){
+        Toast tos = Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT);
+        tos.show();
+    }
+
+    public void onClickBtnDell( View v ) {
+        Button r = (Button) findViewById(R.id.dell);
+        if (v.getId() == R.id.dell) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(Day_Week.this);
+            builder.setTitle("Удалить все записи на этот день")
+                    .setMessage("Вы уверены что хотите удалить ВСЕ записи на этот день, без возможности их вернуть?")
+                    .setCancelable(false)
+                    .setNegativeButton("Не уверен", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    })
+                    .setPositiveButton("Да, удалить", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            int f = 0;
+                            if (data.size() <= 1) {
+                                toastedMes("Нельзя удалить уже пустое расписание \n" +
+                                        "или последнюю запись во всем расписании");
+                            }else{
+                                for (int i = data.size()-1; i >= 0; i--) {
+                                    if (data.get(i).day.equals(dww)) {data.remove(i); f++; }
+                                }
+                                if (f == 0) {
+                                    toastedMes("День уже пустой, удалять нечего");
+                                }else {toastedMes("Удалены все даные " + dww);}
+                            }
+                            Update();
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+    }
+
     public void ListToString(){
-        mass = "";
+        String mass = "";
         for (int i = 0; i < data.size(); i++){
             mass = String.format("%s%s,%s,%s,%s,%s,%s,%s\n", mass, data.get(i).day, data.get(i).classes,
                     data.get(i).data_start, data.get(i).data_end, data.get(i).period, data.get(i).num, data.get(i).aud);

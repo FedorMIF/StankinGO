@@ -6,13 +6,13 @@ import android.os.Parcelable;
 
 public class DBHelp implements Parcelable {
 
-    public String day = "";
-    public String classes = "";
-    public String data_start = "";
-    public String data_end = "";
-    public String period = "";
-    public String num = "";
-    public String aud = "";
+    public String day = ""; // день
+    public String classes = ""; // название пары
+    public String data_start = ""; //дата начала
+    public String data_end = ""; // дата конца
+    public String period = ""; // чн или кн
+    public String num = ""; // номер пары посчету
+    public String aud = ""; // номер аудитории
 
     public String toOneStr(){
         String str = day + ',' + classes + ',' + data_start + ',' + data_end + ',' + period + ',' + num + ',' + aud + '\n';
