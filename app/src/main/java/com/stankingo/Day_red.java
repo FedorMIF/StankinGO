@@ -4,17 +4,9 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.io.File;
-import java.io.FileWriter;
-
-import static com.stankingo.MainActivity.data;
 
 public class Day_red extends Activity {
     EditText n1, d1, n2, d2, n3, d3, n4, d4, a1, a2, a3, a4;
@@ -30,11 +22,11 @@ public class Day_red extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_day_red);
-        Update();
+        setContentView(R.layout.activity_day_red1);
+        //Update();
     }
 
-    @SuppressLint("SetTextI18n")
+    /*@SuppressLint("SetTextI18n")
     public void Update(){
         flag = 0;
         ncl = getIntent().getStringExtra("ncl"); // номер пары
@@ -374,5 +366,5 @@ public class Day_red extends Activity {
             }
         }
         ListToString();
-    }
+    }*/
 }
