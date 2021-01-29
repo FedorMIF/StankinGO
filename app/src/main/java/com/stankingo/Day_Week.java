@@ -192,9 +192,8 @@ public class Day_Week extends Activity {
                     .setPositiveButton("Да, удалить", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             int f = 0;
-                            if (data.size() <= 1) {
-                                toastedMes("Нельзя удалить уже пустое расписание \n" +
-                                        "или последнюю запись во всем расписании");
+                            if (data.size() == 0) {
+                                toastedMes("Расписание уже пустое");
                             }else{
                                 for (int i = data.size()-1; i >= 0; i--) {
                                     if (data.get(i).day.equals(dww)) {data.remove(i); f++; }

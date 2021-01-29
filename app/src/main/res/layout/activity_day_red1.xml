@@ -24,12 +24,12 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView17"
-                    android:layout_width="168dp"
+                    android:id="@+id/name_dist1"
+                    android:layout_width="170dp"
                     android:layout_height="51dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
@@ -39,10 +39,10 @@
                     android:layout_weight="1"
                     android:text="@string/writedist"
                     android:textColor="#FFFFFF"
-                    android:textSize="14sp" />
+                    android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName6"
+                    android:id="@+id/text_dist1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -62,18 +62,19 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView22"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/num_aud1"
+                    android:layout_width="170dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:text="@string/audi"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName11"
+                    android:id="@+id/text_num1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -93,8 +94,8 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView23"
-                    android:layout_width="158dp"
+                    android:id="@+id/date1"
+                    android:layout_width="170dp"
                     android:layout_height="55dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
@@ -104,10 +105,10 @@
                     android:layout_weight="1"
                     android:text="@string/writedata"
                     android:textColor="#FFFFFF"
-                    android:textSize="14sp" />
+                    android:textSize="18sp" />
 
                 <br.com.sapereaude.maskedEditText.MaskedEditText
-                    android:id="@+id/editTextDate5"
+                    android:id="@+id/text_date1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -127,7 +128,7 @@
             </LinearLayout>
 
             <Switch
-                android:id="@+id/switch7"
+                android:id="@+id/yn1"
                 android:layout_width="match_parent"
                 android:layout_height="51dp"
                 android:layout_marginStart="10dp"
@@ -138,118 +139,128 @@
                 android:checked="false"
                 android:text="@string/perswit"
                 android:textColor="#FFFFFF"
-                android:textSize="14sp" />
+                android:textSize="18sp" />
 
             <View
-                android:id="@+id/view23"
+                android:id="@+id/view24"
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:background="@drawable/line" />
 
-            <TableLayout
+            <LinearLayout
+                android:id="@+id/st11"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="invisible">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/name_dist2"
+                    android:layout_width="170dp"
+                    android:layout_height="51dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/writedist"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/textView8"
-                        android:layout_width="136dp"
-                        android:layout_height="51dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginRight="10dp"
-                        android:text="@string/writedist"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
+                <EditText
+                    android:id="@+id/text_dist2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-                    <EditText
-                        android:id="@+id/editTextTextPersonName5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginRight="12dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
+            </LinearLayout>
 
-                </TableRow>
+            <LinearLayout
+                android:id="@+id/st12"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="invisible">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/num_aud2"
+                    android:layout_width="170dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/audi"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="200dp"
-                        android:layout_height="52dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/audi"
-                        android:textColor="#FFFFFF" />
+                <EditText
+                    android:id="@+id/text_num2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-                    <EditText
-                        android:id="@+id/editTextTextPersonName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginRight="12dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
+            </LinearLayout>
 
-                </TableRow>
+            <LinearLayout
+                android:id="@+id/st13"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="invisible">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/date2"
+                    android:layout_width="170dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/writedata"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="217dp"
-                        android:layout_height="55dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginRight="10dp"
-                        android:text="@string/writedata"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
+                <br.com.sapereaude.maskedEditText.MaskedEditText
+                    android:id="@+id/text_date2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:editable="true"
+                    android:ems="10"
+                    android:hint="@string/hintmask"
+                    android:inputType="phone"
+                    android:onClick="eddbtn"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    mask:allowed_chars="1234567890"
+                    mask:mask="##.##-##.##" />
 
-                    <br.com.sapereaude.maskedEditText.MaskedEditText
-                        android:id="@+id/editTextDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginRight="12dp"
-                        android:clickable="false"
-                        android:editable="true"
-                        android:ems="10"
-                        android:hint="@string/hintmask"
-                        android:inputType="phone"
-                        android:onClick="eddbtn"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp"
-                        mask:allowed_chars="1234567890"
-                        mask:mask="##.##-##.##" />
-
-                </TableRow>
-
-            </TableLayout>
+            </LinearLayout>
 
             <Switch
-                android:id="@+id/switch6"
+                android:id="@+id/yn2"
                 android:layout_width="match_parent"
                 android:layout_height="51dp"
                 android:layout_marginStart="10dp"
@@ -260,119 +271,131 @@
                 android:checked="false"
                 android:text="@string/perswit"
                 android:textColor="#FFFFFF"
-                android:textSize="14sp" />
+                android:textSize="18sp"
+                android:visibility="invisible" />
 
             <View
                 android:id="@+id/view22"
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:background="@drawable/line" />
+                android:background="@drawable/line"
+                android:visibility="invisible" />
 
-            <TableLayout
+            <LinearLayout
+                android:id="@+id/st21"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="invisible">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/name_dist3"
+                    android:layout_width="170dp"
+                    android:layout_height="51dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/writedist"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/textView8"
-                        android:layout_width="136dp"
-                        android:layout_height="51dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginRight="10dp"
-                        android:text="@string/writedist"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
+                <EditText
+                    android:id="@+id/text_dist3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-                    <EditText
-                        android:id="@+id/editTextTextPersonName5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginRight="12dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
+            </LinearLayout>
 
-                </TableRow>
+            <LinearLayout
+                android:id="@+id/st22"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="invisible">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/num_aud3"
+                    android:layout_width="170dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/audi"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="200dp"
-                        android:layout_height="52dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/audi"
-                        android:textColor="#FFFFFF" />
+                <EditText
+                    android:id="@+id/text_num3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
-                    <EditText
-                        android:id="@+id/editTextTextPersonName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginRight="12dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
+            </LinearLayout>
 
-                </TableRow>
+            <LinearLayout
+                android:id="@+id/st23"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="invisible">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/date3"
+                    android:layout_width="170dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/writedata"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="217dp"
-                        android:layout_height="55dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginRight="10dp"
-                        android:text="@string/writedata"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
+                <br.com.sapereaude.maskedEditText.MaskedEditText
+                    android:id="@+id/text_date3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:editable="true"
+                    android:ems="10"
+                    android:hint="@string/hintmask"
+                    android:inputType="phone"
+                    android:onClick="eddbtn"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    mask:allowed_chars="1234567890"
+                    mask:mask="##.##-##.##" />
 
-                    <br.com.sapereaude.maskedEditText.MaskedEditText
-                        android:id="@+id/editTextDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginRight="12dp"
-                        android:clickable="false"
-                        android:editable="true"
-                        android:ems="10"
-                        android:hint="@string/hintmask"
-                        android:inputType="phone"
-                        android:onClick="eddbtn"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp"
-                        mask:allowed_chars="1234567890"
-                        mask:mask="##.##-##.##" />
-
-                </TableRow>
-
-            </TableLayout>
+            </LinearLayout>
 
             <Switch
-                android:id="@+id/switch1"
-                android:layout_width="323dp"
+                android:id="@+id/yn3"
+                android:layout_width="match_parent"
                 android:layout_height="51dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
@@ -382,141 +405,154 @@
                 android:checked="false"
                 android:text="@string/perswit"
                 android:textColor="#FFFFFF"
-                android:textSize="14sp" />
-
-            <View
-                android:id="@+id/view13"
-                android:layout_width="wrap_content"
-                android:layout_height="5dp"
-                android:background="@drawable/line" />
-
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        android:layout_width="136dp"
-                        android:layout_height="51dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginRight="10dp"
-                        android:text="@string/writedist"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
-
-                    <EditText
-                        android:id="@+id/editTextTextPersonName5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginRight="12dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="200dp"
-                        android:layout_height="52dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/audi"
-                        android:textColor="#FFFFFF" />
-
-                    <EditText
-                        android:id="@+id/editTextTextPersonName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginRight="12dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="217dp"
-                        android:layout_height="55dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginRight="10dp"
-                        android:text="@string/writedata"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
-
-                    <br.com.sapereaude.maskedEditText.MaskedEditText
-                        android:id="@+id/editTextDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginRight="12dp"
-                        android:clickable="false"
-                        android:editable="true"
-                        android:ems="10"
-                        android:hint="@string/hintmask"
-                        android:inputType="phone"
-                        android:onClick="eddbtn"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp"
-                        mask:allowed_chars="1234567890"
-                        mask:mask="##.##-##.##" />
-
-                </TableRow>
-
-            </TableLayout>
-
-            <Switch
-                android:id="@+id/switch5"
-                android:layout_width="316dp"
-                android:layout_height="51dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:checked="false"
-                android:text="@string/perswit"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp" />
+                android:textSize="18sp"
+                android:visibility="invisible" />
 
             <View
                 android:id="@+id/view21"
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:background="@drawable/line" />
+                android:background="@drawable/line"
+                android:visibility="invisible" />
+
+            <LinearLayout
+                android:id="@+id/st31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/name_dist4"
+                    android:layout_width="170dp"
+                    android:layout_height="51dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/writedist"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/text_dist4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/st32"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/num_aud4"
+                    android:layout_width="170dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/audi"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/text_num4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/st33"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/date4"
+                    android:layout_width="170dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/writedata"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+
+                <br.com.sapereaude.maskedEditText.MaskedEditText
+                    android:id="@+id/text_date4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:editable="true"
+                    android:ems="10"
+                    android:hint="@string/hintmask"
+                    android:inputType="phone"
+                    android:onClick="eddbtn"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    mask:allowed_chars="1234567890"
+                    mask:mask="##.##-##.##" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view23"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@drawable/line"
+                android:visibility="invisible" />
+
+            <Switch
+                android:id="@+id/yn4"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:checked="false"
+                android:text="@string/perswit"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:visibility="invisible" />
 
         </LinearLayout>
     </ScrollView>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_edd"
         style="@android:style/Widget.Holo.Button.Small"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
