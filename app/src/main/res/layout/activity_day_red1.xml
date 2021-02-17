@@ -8,6 +8,21 @@
     android:background="@color/colorPrimary"
     tools:context=".Day_red">
 
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:text="@string/podpis"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="#4A4747"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        mask:layout_constraintBottom_toBottomOf="parent"
+        mask:layout_constraintEnd_toEndOf="parent"
+        mask:layout_constraintStart_toStartOf="parent" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -560,12 +575,11 @@
         android:layout_marginLeft="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
         android:onClick="eddbtn"
         android:text="@string/edd"
         android:textAllCaps="true"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
