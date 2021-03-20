@@ -34,7 +34,7 @@
         app:layout_constraintBottom_toTopOf="@+id/textView10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/prev_step2"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView3"
+        app:layout_constraintTop_toBottomOf="@+id/helptext2"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
@@ -50,7 +50,7 @@
         app:layout_constraintEnd_toStartOf="@+id/next_step2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView3"
+        app:layout_constraintTop_toBottomOf="@+id/helptext2"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
@@ -85,6 +85,7 @@
         android:ems="10"
         android:hint="@string/hint"
         android:inputType="textPersonName"
+        android:imeOptions="actionDone"
         app:layout_constraintEnd_toStartOf="@+id/imageView4"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -120,29 +121,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <TextView
-        android:id="@+id/helptext2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
-        android:gravity="center"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
-
     <ScrollView
         android:id="@+id/scrollView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="16dp"
+        android:layout_height="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/helptext2">
+        app:layout_constraintTop_toBottomOf="@+id/button">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -157,7 +142,20 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 app:srcCompat="@android:drawable/divider_horizontal_dark" />
+
         </LinearLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/helptext2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="яапвпвапав"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

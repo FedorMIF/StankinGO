@@ -2,7 +2,7 @@
     <string name="app_name">СтанкинGo</string>
     <string name="betta">Мое расписание</string>
     <string name="help">О программе</string>
-    <string name="gid">Прогрмма разрабоната студентом МГТУ Станкин Коноваловым Федором Михайловичом</string>
+    <string name="gid">Программа разработана студентом МГТУ Станкин Коноваловым Федором Михайловичем</string>
     <string name="caf">Найти кафедру</string>
     <string name="txtCredits">stankin.project.findway@mail.ru</string>
     <string name="ver">Версия приложения 1.1.1</string>
@@ -22,7 +22,7 @@
     <string name="hintmask">ДДММДДММ</string>
     <string name="audi">Введите номер аудитории</string>
     <string name="perswit">Дисциплина через неделю или нет</string>
-    <string name="delldw">Удалить распиание дня</string>
+    <string name="delldw">Удалить расписание дня</string>
     <string name="xx">title</string>
     <string name="podpis">Разработано Коноваловым Федором.</string>
 </resources>

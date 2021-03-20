@@ -94,18 +94,6 @@ public class MainActivity extends Activity {
             case R.id.but_Cal:
                 Intent intent3 = new Intent(this, MainClasses.class);
                 startActivity(intent3);
-//                androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(MainActivity.this);
-//                builder.setTitle("В разработке")
-//                        .setMessage("Работаю над исправлением багов, надеюсь скоро выйдет\n" +
-//                                "       (´• ω •)        ")
-//                        .setCancelable(false)
-//                        .setNegativeButton("Удачи", new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int id) {
-//                                dialog.cancel();
-//                            }
-//                        });
-//                androidx.appcompat.app.AlertDialog alert = builder.create();
-//                alert.show();
                 break;
             case R.id.but_Help:
                 Intent intent4 = new Intent(this, Help.class);

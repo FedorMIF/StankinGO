@@ -1,9 +1,11 @@
 package com.stankingo;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -101,6 +103,9 @@ public class MainCaf extends AppCompatActivity {
                 i = 0;
                 way_list.clear();
                 way_text.clear();
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(button.getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
                 if (editrstst1.getText().toString().equals("")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainCaf.this);
                     builder.setTitle("Не верное значение")
@@ -117,7 +122,7 @@ public class MainCaf extends AppCompatActivity {
                 else {
                     start_cabinet = MainAudi.toEnglish(editrstst1.getText().toString());
                     end_cabinet = num[pos];
-                    if ( (perau.contains(start_cabinet) ||oldau.contains(start_cabinet) || oldoldau.contains(start_cabinet) || newau.contains(start_cabinet)) ||
+                    if ( perau.contains(start_cabinet) ||oldau.contains(start_cabinet) || oldoldau.contains(start_cabinet) || newau.contains(start_cabinet) ||
                             start_cabinet.equals("entry") || start_cabinet.equals("kafe") || start_cabinet.equals("rektor") ) {
 
                         if (newau.contains(start_cabinet)) { start_build = "new"; start_level = start_cabinet.charAt(1);

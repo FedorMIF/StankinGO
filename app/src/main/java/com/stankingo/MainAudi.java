@@ -1,9 +1,11 @@
 package com.stankingo;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -165,6 +167,9 @@ public class MainAudi extends AppCompatActivity {
                 i = 0;
                 way_list.clear();
                 way_text.clear();
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(button1.getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
                 if (editrstst1.getText().toString().equals("")||editrstst2.getText().toString().equals("")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainAudi.this);
                     builder.setTitle("Что-то не так")
@@ -182,10 +187,10 @@ public class MainAudi extends AppCompatActivity {
                 else {
                     start_cabinet = toEnglish(editrstst1.getText().toString());
                     end_cabinet = toEnglish(editrstst2.getText().toString());
-                    if ( (perau.contains(start_cabinet) ||oldau.contains(start_cabinet) || oldoldau.contains(start_cabinet) || newau.contains(start_cabinet) || oldcafau.contains(start_cabinet) ) &&
-                            (perau.contains(end_cabinet) || oldau.contains(end_cabinet) || oldoldau.contains(end_cabinet) || newau.contains(end_cabinet) || oldcafau.contains(end_cabinet)) ||
-                            (start_cabinet.equals("entry") || start_cabinet.equals("kafe") || start_cabinet.equals("rektor"))||
-                            (end_cabinet.equals("exit") || end_cabinet.equals("kafe") || end_cabinet.equals("rektor")) ) {
+                    if ( ( perau.contains(start_cabinet) || oldau.contains(start_cabinet) || oldoldau.contains(start_cabinet) || newau.contains(start_cabinet) || oldcafau.contains(start_cabinet) ||
+                            start_cabinet.equals("entry") || start_cabinet.equals("kafe") || start_cabinet.equals("rektor") ) &&
+                            ( perau.contains(end_cabinet) || oldau.contains(end_cabinet) || oldoldau.contains(end_cabinet) || newau.contains(end_cabinet) || oldcafau.contains(end_cabinet) ||
+                                    end_cabinet.equals("exit") || end_cabinet.equals("kafe") || end_cabinet.equals("rektor") ) ) {
 
                         if (newau.contains(start_cabinet)) { start_build = "new"; start_level = start_cabinet.charAt(1);
                             if (newau.contains(end_cabinet)){ end_build = "new"; end_level = end_cabinet.charAt(1);}

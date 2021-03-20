@@ -52,6 +52,7 @@
         android:ems="10"
         android:hint="@string/hint"
         android:inputType="textPersonName"
+        android:imeOptions="actionDone"
         android:textColorHighlight="#80131212"
         android:textColorLink="#141313"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,6 +71,7 @@
         android:hint="@string/hint"
         android:inputType="textPersonName"
         android:textColorHighlight="#800E0D0D"
+        android:imeOptions="actionDone"
         android:textColorLink="#141414"
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintHorizontal_bias="1.0"
@@ -103,7 +105,7 @@
         app:layout_constraintBottom_toTopOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/prev_step"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintTop_toBottomOf="@+id/helptext"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
@@ -119,7 +121,7 @@
         app:layout_constraintEnd_toStartOf="@+id/next_step"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintTop_toBottomOf="@+id/helptext"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
@@ -132,29 +134,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:srcCompat="@android:drawable/ic_media_ff" />
 
-    <TextView
-        android:id="@+id/helptext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:autoText="false"
-        android:editable="false"
-        android:gravity="center|center_vertical"
-        android:selectAllOnFocus="false"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/get_way" />
-
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/helptext">
+        app:layout_constraintTop_toBottomOf="@+id/get_way">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -173,5 +159,20 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/helptext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoText="false"
+        android:editable="false"
+        android:gravity="center|center_vertical"
+        android:selectAllOnFocus="false"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
