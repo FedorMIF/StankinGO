@@ -8,7 +8,7 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
-        android:icon="@mipmap/logo_stankin_sircl"
+        android:icon="@mipmap/logo_stamkin_sqrt"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/logo_stankin_sircl"
         android:supportsRtl="true"

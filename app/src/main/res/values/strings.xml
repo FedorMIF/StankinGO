@@ -5,8 +5,8 @@
     <string name="gid">Программа разработана студентом МГТУ Станкин Коноваловым Федором Михайловичем</string>
     <string name="caf">Найти кафедру</string>
     <string name="txtCredits">stankin.project.findway@mail.ru</string>
-    <string name="ver">Версия приложения 1.1.1</string>
-    <string name="aud">Найти аутидорию</string>
+    <string name="ver">Версия приложения 1.1.3</string>
+    <string name="aud">Найти аудиторию</string>
     <string name="zagolovok">Гид по МГТУ СТАНКИН</string>
     <string name="text1">Введите номер аудитории рядом с Вами и номер нужной Вам</string>
     <string name="text2">Введите номер аудитории рядом с Вами и название нужной Вам кафедры</string>

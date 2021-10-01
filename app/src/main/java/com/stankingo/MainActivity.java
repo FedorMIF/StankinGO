@@ -105,7 +105,7 @@ public class MainActivity extends Activity {
     }
     public void Load(){
         if (data.size() == 0) {
-            //try {
+            try {
                 File sdcard = Environment.getExternalStorageDirectory();
                 //Создаём объект файла
                 File file = new File(getApplicationContext().getFilesDir(), "rasp.txt");
@@ -124,7 +124,7 @@ public class MainActivity extends Activity {
                 }
 
                 Log.d("Data", String.valueOf(text));
-            //} catch (Exception e) { }
+            } catch (Exception e) { }
         }
 
     }
